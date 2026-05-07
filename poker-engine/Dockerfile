@@ -1,0 +1,16 @@
+FROM pytorch/pytorch:2.4.0-cuda12.4-cudnn9-runtime
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl git build-essential cargo \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENV PYTHONUNBUFFERED=1
+
+ENTRYPOINT ["python", "-m", "train.train"]

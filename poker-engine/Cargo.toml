@@ -1,0 +1,17 @@
+[package]
+name = "poker-evaluator"
+version = "0.1.0"
+edition = "2021"
+description = "Ultra-fast 7-card poker hand evaluator in Rust"
+
+[lib]
+name = "poker_evaluator"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.20", features = ["extension-module"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

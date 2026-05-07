@@ -1,0 +1,35 @@
+{
+    "strategy": {
+        "name": "funding_rate_rotation",
+        "funding_interval_hours": 8,
+        "min_funding_rate": 0.0001,
+        "max_funding_rate": 0.005,
+        "top_n_symbols": 5,
+        "max_position_pct": 0.02,
+        "rebalance_after_seconds": 60
+    },
+    "risk": {
+        "max_portfolio_size_pct": 1.0,
+        "max_single_position_pct": 0.02,
+        "stop_loss_pct": 0.05,
+        "emergency_close_all_on_negative_funding": true,
+        "min_24h_volume_usd": 10000000
+    },
+    "exchanges": {
+        "binance": {
+            "ws_url": "wss://fstream.binance.com/ws",
+            "rest_url": "https://fapi.binance.com",
+            "testnet": false
+        },
+        "bybit": {
+            "ws_url": "wss://stream.bybit.com/v5/public/linear",
+            "rest_url": "https://api.bybit.com",
+            "testnet": false
+        }
+    },
+    "database": {
+        "timescaledb_url": "postgresql://trader:password@localhost:5432/crypto",
+        "kafka_brokers": "localhost:9092",
+        "topic_prefix": "crypto"
+    }
+}

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "poker-engine"
+version = "0.1.0"
+description = "High-performance NL Texas Hold'em game engine with optional Rust acceleration"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+rust = ["poker-evaluator"]
