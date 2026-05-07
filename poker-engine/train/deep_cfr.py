@@ -25,7 +25,7 @@ from train.encoding import StateEncoder
 from train.model import DeepCFRNet, SmallCFRNet, create_model
 from train.buffer import ReplayBuffer, RegretBuffer
 
-TRAVERSE_BATCH_SIZE = 64
+TRAVERSE_BATCH_SIZE = 512
 
 
 class DeepCFRTrainer:

@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from train.config import TrainingConfig
 from train.deep_cfr import DeepCFRTrainer
+import train.deep_cfr as deep_cfr_module
 
 
 def main():
@@ -26,6 +27,7 @@ def main():
     parser.add_argument("--starting-stack", type=int, default=200, help="Starting stack in BB")
     parser.add_argument("--amp", action="store_true", default=True, help="Use mixed precision")
     parser.add_argument("--no-amp", action="store_false", dest="amp", help="Disable mixed precision")
+    parser.add_argument("--traverse-batch", type=int, default=512, help="Parallel hands per batch (GPU utilization)")
     parser.add_argument("--epochs", type=int, default=4, help="Value net epochs per iteration")
     parser.add_argument("--eval-hands", type=int, default=1000, help="Hands for exploitability eval")
     parser.add_argument("--save-interval", type=int, default=50, help="Save checkpoint every N iters")
@@ -76,6 +78,9 @@ def main():
     print(f"Resume from: {config.resume_from}")
     print(f"Wandb: {config.wandb_project}")
     print("=" * 60)
+
+    deep_cfr_module.TRAVERSE_BATCH_SIZE = args.traverse_batch
+    print(f"Traverse batch: {deep_cfr_module.TRAVERSE_BATCH_SIZE}")
 
     trainer = DeepCFRTrainer(config)
     trainer.train()
