@@ -111,8 +111,6 @@ class DeepCFRTrainer:
             "optimizer": self.optimizer.state_dict(),
             "scheduler": self.scheduler.state_dict(),
             "iteration": self.iteration,
-            "strategy_sum": {k: v.cpu() if hasattr(v, 'cpu') else v for k, v in self.strategy_sum.items()},
-            "strategy_count": dict(self.strategy_count),
             "best_exploitability": self.best_exploitability,
         }
         torch.save(checkpoint, path)

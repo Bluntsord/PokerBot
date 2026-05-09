@@ -1,0 +1,24 @@
+{
+    "files.exclude": {
+        "**/*.asv": true
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.automationShell.osx": "/bin/zsh",
+    "MATLAB.matlabConnectionTiming": "onStart",
+    "MATLAB.installPath": "/Applications/MATLAB_R2025a.app",
+    "MATLAB.indexWorkspace": true,
+    "MATLAB.showFeatureNotAvailableError": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never"
+    },
+    "[matlab]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": false
+        },
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.wordBasedSuggestions": "matchingDocuments"
+    }
+}
