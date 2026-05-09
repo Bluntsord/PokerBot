@@ -118,6 +118,20 @@ class DeepCFRTrainer:
             best_path = path.replace(".pt", "_best.pt")
             torch.save(checkpoint, best_path)
 
+        ckpt_files = sorted(
+            [f for f in os.listdir(self.config.checkpoint_dir) if f.startswith("ckpt_")],
+            reverse=True,
+        )
+        for old in ckpt_files[3:]:
+            os.remove(os.path.join(self.config.checkpoint_dir, old))
+
+        best_files = sorted(
+            [f for f in os.listdir(self.config.checkpoint_dir) if f.startswith("best_")],
+            reverse=True,
+        )
+        for old in best_files[3:]:
+            os.remove(os.path.join(self.config.checkpoint_dir, old))
+
     def _make_state_dict(self, engine: GameEngine, player_id: int) -> dict:
         state = engine.state
         player = state.players[player_id]
